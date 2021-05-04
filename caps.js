@@ -7,19 +7,10 @@ const events = require('./modules/events.js');
 require('./modules/driver/driver.js');
 require('./modules/vendor/vendor.js');
 
-events.on('pickup', pickupLogger);
-events.on('in-transit', transitLogger);
-events.on('delivered', deliveredLogger);
+events.on('pickup', packageLogger);
+events.on('in-transit', packageLogger);
+events.on('delivered', packageLogger);
 
-// how to DRY this up??? 
-function pickupLogger(payload) {
+function packageLogger(payload) {
   console.log('EVENT:',payload);
-}
-
-function transitLogger(payload) {
-  console.log('EVENT:', payload);
-}
-
-function deliveredLogger(payload) {
-  console.log('EVENT:', payload);
 }

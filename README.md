@@ -7,16 +7,14 @@
 ### Links and Resources
 
 - [ci/cd](https://github.com/brendigler/caps/actions)
-- [server url]()
-- [pull request]()
+<!-- - [server url]() -->
+- [pull request](https://github.com/brendigler/caps/pull/1)
 
 ### Setup
 
 #### `.env` requirements
 
-- `PORT` - Port Number
-- `MONGODB_URI` - MongoDB URI
-- `SECRET` - JWT secret
+- `storeName` string
 
 #### How to initialize/run your application
 
@@ -30,4 +28,4 @@
 
 #### UML / Application Wiring Diagram
 
-![UML](uml.jpg)
+![UML](uml.png)

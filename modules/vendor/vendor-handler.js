@@ -2,6 +2,8 @@
 
 const events = require('../events.js');
 const faker = require('faker');
+const dotenv = require('dotenv');
+dotenv.config();
 
 function thankYou(payload) {
   console.log(`VENDOR: thank you for delivering order ${payload.order.orderID}`);
@@ -10,7 +12,7 @@ function thankYou(payload) {
 setInterval(() => {
   // instantiate a new order event every 5 seconds
   let order = {
-    storeName: faker.company.companyName(),
+    storeName: process.env.storeName,
     orderID: faker.random.alphaNumeric(10),
     customerName: faker.name.findName(),
     address: faker.address.streetAddress()
@@ -21,6 +23,7 @@ setInterval(() => {
     time: new Date(),
     order: order
   }
+  
   events.emit('pickup', packageObj);
 }, 5000);
 
