@@ -13,28 +13,13 @@ events.on('delivered', deliveredLogger);
 
 // how to DRY this up??? 
 function pickupLogger(payload) {
-  const eventLog = {
-    event: 'pickup',
-    time: new Date(),
-    payload: payload
-  };
-  console.log('EVENT:',eventLog);
+  console.log('EVENT:',payload);
 }
 
 function transitLogger(payload) {
-  const eventLog = {
-    event: 'in-transit',
-    time: new Date(),
-    payload: payload
-  };
-  console.log('EVENT:',eventLog);
+  console.log('EVENT:', payload);
 }
 
 function deliveredLogger(payload) {
-  const eventLog = {
-    event: 'delivered',
-    time: new Date(),
-    payload: payload
-  };
-  console.log('EVENT:',eventLog);
+  console.log('EVENT:', payload);
 }

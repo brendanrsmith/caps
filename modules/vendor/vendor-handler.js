@@ -4,7 +4,7 @@ const events = require('../events.js');
 const faker = require('faker');
 
 function thankYou(payload) {
-  console.log(`VENDOR: thank you for delivering ${payload.orderID}`);
+  console.log(`VENDOR: thank you for delivering order ${payload.order.orderID}`);
 }
 
 setInterval(() => {
@@ -15,7 +15,13 @@ setInterval(() => {
     customerName: faker.name.findName(),
     address: faker.address.streetAddress()
   };
-  events.emit('pickup', order);
+  
+  let packageObj = {
+    event: 'pickup',
+    time: new Date(),
+    order: order
+  }
+  events.emit('pickup', packageObj);
 }, 5000);
 
 module.exports = { thankYou };
