@@ -1,0 +1,26 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "## Project: Caps",
+  "main": "caps.js",
+  "scripts": {
+    "test": "jest --coverage --verbose",
+    "start": "node caps.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendigler/caps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendigler/caps/issues"
+  },
+  "homepage": "https://github.com/brendigler/caps#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "faker": "^5.5.3",
+    "jest": "^26.6.3"
+  }
+}
