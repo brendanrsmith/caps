@@ -10,16 +10,16 @@ const handlers = {};
 handlers.logdeliver = (payload) => {
 
   setTimeout(function() {
-    console.log(`Picking up ${payload.order.orderID}`);
-    payload.event = 'in-transit';
-    payload.time = new Date();
+    console.log(`Picking up ${payload.orderID}`);
+    // payload.event = 'in-transit';
+    // payload.time = new Date();
     socket.emit('in-transit', payload);
   }, 1500);
 
   setTimeout(function() {
-    console.log(`Delivered order ${payload.order.orderID}`);
-    payload.event = 'delivered';
-    payload.time = new Date();
+    console.log(`Delivered order ${payload.orderID}`);
+    // payload.event = 'delivered';
+    // payload.time = new Date();
     socket.emit('delivered', payload);
   }, 3000);
 

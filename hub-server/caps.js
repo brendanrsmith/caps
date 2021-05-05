@@ -28,22 +28,23 @@ caps.on('connection', socket => {
   })
 
   socket.on('pickup', payload => {
-    packageLogger(payload);
+    packageLogger(payload, 'pickup');
     caps.emit('pickup', payload);
   });
 
   socket.on('in-transit', payload => {
-    packageLogger(payload);
-    caps.to(payload.order.storeID).emit('in-transit', payload); // emits only to clients that are connected to `storeID` ROOM
+    packageLogger(payload, 'in-transit');
+    caps.to(payload.storeID).emit('in-transit', payload); // emits only to clients that are connected to `storeID` ROOM
   });
 
   socket.on('delivered', payload => {
-    packageLogger(payload);
-    caps.to(payload.order.storeID).emit('delivered', payload);
+    packageLogger(payload, 'delivered');
+    caps.to(payload.storeID).emit('delivered', payload);
   });
 
 });
 
-function packageLogger(payload) {
-  console.log('EVENT:',payload);
+function packageLogger(payload, event) {
+  let time = new Date();
+  console.log('EVENT:', { event, time, payload });
 }

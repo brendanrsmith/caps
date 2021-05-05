@@ -29,11 +29,5 @@ setInterval( () => {
     address: faker.address.streetAddress()
   };
   
-  let packageObj = {
-    event: 'pickup',
-    time: new Date(),
-    order: order
-  }
-  
-  socket.emit('pickup', packageObj);
+  socket.emit('pickup', order);
 }, 5000);
