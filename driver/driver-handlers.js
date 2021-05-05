@@ -10,7 +10,7 @@ const handlers = {};
 handlers.logdeliver = (payload) => {
 
   setTimeout(function() {
-    console.log(`Picking up ${payload.order.orderID}`); // plug in order id from payload
+    console.log(`Picking up ${payload.order.orderID}`);
     payload.event = 'in-transit';
     payload.time = new Date();
     capsConnection.emit('in-transit', payload);
