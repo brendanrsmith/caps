@@ -18,9 +18,11 @@ io.on('connection', socket => {
 
 caps.on('connection', socket => {
 
+  console.log('connected socket', socket.id);
+
   // this is our own 'join' event that we register
   socket.on('join', room => {
-    console.log('room name:', room);
+    console.log(socket.id, 'joined room', room);
     // this join method is builtin to socket.io
     socket.join(room);
   })

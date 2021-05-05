@@ -17,7 +17,7 @@ handlers.logdeliver = (payload) => {
   }, 1500);
 
   setTimeout(function() {
-    console.log(`DRIVER: delivered order ${payload.order.orderID}`);
+    console.log(`Delivered order ${payload.order.orderID}`);
     payload.event = 'delivered';
     payload.time = new Date();
     socket.emit('delivered', payload);

@@ -24,7 +24,7 @@ setInterval( () => {
   // instantiate a new order event every 5 seconds
   let order = {
     storeID: storeID,
-    orderID: faker.random.alphaNumeric(10),
+    orderID: faker.datatype.uuid(),
     customerName: faker.name.findName(),
     address: faker.address.streetAddress()
   };
