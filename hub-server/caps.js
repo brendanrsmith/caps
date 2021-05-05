@@ -34,12 +34,12 @@ caps.on('connection', socket => {
 
   socket.on('in-transit', payload => {
     packageLogger(payload, 'in-transit');
-    caps.to(payload.storeID).emit('in-transit', payload); // emits only to clients that are connected to `storeID` ROOM
+    caps.to(payload.store).emit('in-transit', payload); // emits only to clients that are connected to `store` ROOM
   });
 
   socket.on('delivered', payload => {
     packageLogger(payload, 'delivered');
-    caps.to(payload.storeID).emit('delivered', payload);
+    caps.to(payload.store).emit('delivered', payload);
   });
 
 });

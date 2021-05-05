@@ -23,9 +23,9 @@ socket.on('delivered', handlers.thankYou);
 setInterval( () => {
   // instantiate a new order event every 5 seconds
   let order = {
-    storeID: storeID,
+    store: storeID,
     orderID: faker.datatype.uuid(),
-    customerName: faker.name.findName(),
+    customer: faker.name.findName(),
     address: faker.address.streetAddress()
   };
   

@@ -12,7 +12,7 @@ const SERVER_URL = process.env.SERVER_URL || 'http://localhost:3000';
 const socket = io.connect(`${SERVER_URL}/caps`); 
 
 const app = express();
-const PORT = process.env.PORT || 3005; // we are using port 3000 for caps.js server
+const PORT = process.env.PORT || 3001; // we are using port 3000 for caps.js server
 
 app.use(cors()); // opens api to all users
 app.use(express.json()); // allows for POST or PUT requests with a req.body
@@ -20,19 +20,13 @@ app.use(express.urlencoded({ extended : true })); // req.body can be sent from a
 
 app.post('/caps', (req, res) => {
   let order = req.body || {
-    storeID: '1-800-vendor',
+    store: '1-800-vendor',
     orderID: faker.datatype.uuid(),
-    customerName: faker.name.findName(),
+    customer: faker.name.findName(),
     address: faker.address.streetAddress()
   };
-  // TODO refactor this function to caps server!
-  let packageObj = {
-    event: 'pickup',
-    time: new Date(),
-    order: order
-  }
 
-  socket.emit('pickup', packageObj);
+  socket.emit('pickup', order);
   res.status(200).send('your package pickup was scheduled');
 });
 
