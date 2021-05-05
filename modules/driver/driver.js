@@ -2,7 +2,12 @@
 
 'use strict';
 
-const events = require('../events.js');
+const io = require('socket.io-client');
 const handlers = require('./driver-handlers.js');
 
-events.on('pickup', handlers.logDeliver);
+// connect to caps namespace
+let host = 'http://localhost:3000';
+const capsConnection = io.connect(`${host}/caps`);
+
+// listeners
+capsConnection.on('pickup', handlers.logDeliver);
