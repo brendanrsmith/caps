@@ -11,11 +11,14 @@ const io = require('socket.io-client');
 const handlers = require('./vendor-handler.js');
 
 // connect to caps namespace
-let host = 'http://localhost:3000';
-const capsConnection = io.connect(`${host}/caps`);
+const host = process.env.SERVER_URL || 'http://localhost:3000';
+const socket = io.connect(`${host}/caps`);
+
+// join room 'STOREID'
+socket.emit('join', storeID);
 
 // listeners
-capsConnection.on('delivered', handlers.thankYou);
+socket.on('delivered', handlers.thankYou);
 
 setInterval( () => {
   // instantiate a new order event every 5 seconds
@@ -32,5 +35,5 @@ setInterval( () => {
     order: order
   }
   
-  capsConnection.emit('pickup', packageObj);
+  socket.emit('pickup', packageObj);
 }, 5000);
