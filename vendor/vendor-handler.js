@@ -2,8 +2,8 @@
 
 const handlers = {};
 
-handlers.thankyou = (payload) => {
-  console.log(`VENDOR: thank you for delivering order ${payload.order.orderID}`);
+handlers.thankYou = (payload) => {
+  console.log(`Thank you for delivering order ${payload.orderID}`);
 }
 
 module.exports = handlers;
