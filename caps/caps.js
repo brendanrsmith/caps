@@ -20,7 +20,7 @@ caps.on('connection', socket => {
 
   socket.on('pickup', payload => {
     packageLogger(payload);
-    caps.emit('pickup', payload);
+    socket.broadcast.emit('pickup', payload);
   });
 
   socket.on('in-transit', payload => {
